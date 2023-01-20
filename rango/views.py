@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from tango_with_django_project import settings
 
 def index(request):
     #Construct a dictionary to pass to the template engine as its context.
@@ -12,6 +13,6 @@ def index(request):
     return render(request, 'rango/index.html', context = context_dict)
 
 def about(request):
-    context_dict = {'myname': "Kirsty Balfour"}
+    context_dict = {'MEDIA_URL': settings.MEDIA_URL, 'boldmessage': 'This tutorial has been put together by Kirsty Balfour.'}
 
     return render(request, 'rango/about.html', context = context_dict)
