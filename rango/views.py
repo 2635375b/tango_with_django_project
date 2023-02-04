@@ -27,9 +27,7 @@ def index(request):
     return render(request, 'rango/index.html', context = context_dict)
 
 def about(request):
-    context_dict = {'MEDIA_URL': settings.MEDIA_URL, 'boldmessage': 'This tutorial has been put together by Kirsty Balfour.'}
-
-    return render(request, 'rango/about.html', context = context_dict)
+    return render(request, 'rango/about.html', {})
 
 def show_category(request, category_name_slug):
     #Create a context dictionary which we can pass to the template rendering engine
@@ -73,7 +71,7 @@ def add_category(request):
             form.save(commit=True)
             #Now that the category is saved, we could confirm this.
             #For now, just redirect the user back to the index view
-            return redirect('/rango/')
+            return redirect(reverse('rango:index'))
         else:
             #The supplied form contained errors - just print them to the terminal
             print(form.errors)
@@ -89,7 +87,7 @@ def add_page(request, category_name_slug):
         category = None
 
     if category is None:
-        return redirect('/rango/')
+        return redirect(reverse('rango:index'))
 
     form = PageForm()
 
