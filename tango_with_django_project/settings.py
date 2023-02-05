@@ -36,6 +36,9 @@ MEDIA_URL = '/media/'
 # LOGIN VARIABLES
 LOGIN_URL = 'rango:login'
 
+#Session Variables
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
 # Application definition
 
 INSTALLED_APPS = [
